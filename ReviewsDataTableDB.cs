@@ -87,5 +87,29 @@ namespace LinqPractice
             foreach (var row in Data)
                 Console.WriteLine("Product: " + row["ProductID"] + " User: " + row["UserID"] + " Rating: " + row["Rating"] + " Review: " + row["Review"]);
         }
+
+        public void AddDataForUser10()
+        {
+            productReviews.Rows.Add(1, 10, 3, "nice", true);
+            productReviews.Rows.Add(2, 10, 4, "Good", true);
+            productReviews.Rows.Add(3, 10, 3, "Old", false);
+            productReviews.Rows.Add(4, 10, 1, "Bad", false);
+            productReviews.Rows.Add(5, 10, 3, "Okay", true);
+            productReviews.Rows.Add(6, 10, 0, "Bad", false);
+            productReviews.Rows.Add(7, 10, 5, "Good", true);
+            productReviews.Rows.Add(8, 10, 5, "Good", true);
+            productReviews.Rows.Add(9, 10, 4, "nice", true);
+        }
+
+        public void GetDataFromUser10()
+        {
+            var Data = from productReview in productReviews.AsEnumerable()
+                       where (int)productReview["UserID"]==10
+                       orderby (int)productReview["Rating"] descending
+                       select productReview;
+
+            foreach (var row in Data)
+                Console.WriteLine("Product: " + row["ProductID"] + " User: " + row["UserID"] + " Rating: " + row["Rating"] + " Review: " + row["Review"]+" Liked? "+row["isLike"]);
+        }
     }
 }
