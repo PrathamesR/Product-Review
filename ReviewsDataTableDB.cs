@@ -77,5 +77,15 @@ namespace LinqPractice
             foreach (var row in Data)
                 Console.WriteLine("Product: " + row.ProductId + " Average: " + row.Average);
         }
+
+        public void GetNiceReviews()
+        {
+            var Data = from productReview in productReviews.AsEnumerable()
+                       where (string)productReview["Review"] == "nice"
+                       select productReview;
+
+            foreach (var row in Data)
+                Console.WriteLine("Product: " + row["ProductID"] + " User: " + row["UserID"] + " Rating: " + row["Rating"] + " Review: " + row["Review"]);
+        }
     }
 }

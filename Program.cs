@@ -55,6 +55,8 @@ namespace LinqPractice
             dB.GetAllLikedReviews();
             Console.WriteLine("---");
             dB.GetAverageRating();
+            Console.WriteLine("---");
+            dB.GetNiceReviews();
             Console.ReadLine();
         }
     }
