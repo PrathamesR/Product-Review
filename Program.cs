@@ -46,10 +46,12 @@ namespace LinqPractice
             Console.WriteLine("---");
             management.GetFrom6th(productReviews);
 
-            Console.WriteLine("DataTable Data");
+            Console.WriteLine("\nDataTable Data");
             ReviewsDataTableDB dB = new ReviewsDataTableDB();
             dB.CreateDataTable();
-            dB.Add25Defaults();
+            //dB.Add25Defaults();   //UC8
+            dB.AddData();
+            dB.GetAllLikedReviews();
             Console.ReadLine();
         }
     }
