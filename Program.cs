@@ -45,7 +45,12 @@ namespace LinqPractice
             management.GetReviews(productReviews);
             Console.WriteLine("---");
             management.GetFrom6th(productReviews);
-            Console.Read();
+
+            Console.WriteLine("DataTable Data");
+            ReviewsDataTableDB dB = new ReviewsDataTableDB();
+            dB.CreateDataTable();
+            dB.Add25Defaults();
+            Console.ReadLine();
         }
     }
 }
