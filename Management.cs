@@ -34,5 +34,14 @@ namespace LinqPractice
             foreach (var record in recordedData)
                 Console.WriteLine("ProductID: " + record.ProductId + " " + " UserId: " + record.UserId + " " + " Rating: " + record.Rating + " " + " Review: " + record.Review + " Liked: " + record.isLike);
         }
+
+        public void GetReviewCountByProduct(List<ProductReview> reviews)
+        {
+            var Data = reviews.GroupBy(x => x.ProductId).Select(x => new { ProductId = x.Key, Count = x.Count() });
+            foreach (var product in Data)
+            {
+                Console.WriteLine("ProductId: "+product.ProductId + " Count: " + product.Count);
+            }
+        }
     }
 }
