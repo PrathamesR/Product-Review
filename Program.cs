@@ -49,9 +49,12 @@ namespace LinqPractice
             Console.WriteLine("\nDataTable Data");
             ReviewsDataTableDB dB = new ReviewsDataTableDB();
             dB.CreateDataTable();
+            Console.WriteLine("---");
             //dB.Add25Defaults();   //UC8
             dB.AddData();
             dB.GetAllLikedReviews();
+            Console.WriteLine("---");
+            dB.GetAverageRating();
             Console.ReadLine();
         }
     }

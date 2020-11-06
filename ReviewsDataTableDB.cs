@@ -48,13 +48,14 @@ namespace LinqPractice
 
         public void AddData()
         {
-            productReviews.Rows.Add(1, 1001, 2, "Good", true);
+            productReviews.Rows.Add(1, 1001, 3, "nice", true);
             productReviews.Rows.Add(2, 1002, 4, "Good", true);
             productReviews.Rows.Add(3, 1003, 3, "Old", false);
             productReviews.Rows.Add(1, 1002, 1, "Bad", false);
             productReviews.Rows.Add(4, 1003, 3, "Okay", true);
             productReviews.Rows.Add(3, 1004, 0, "Very Bad", false);
             productReviews.Rows.Add(2, 1004, 5, "Good", true);
+            productReviews.Rows.Add(1, 1004, 4, "nice", true);
         }
 
         public void GetAllLikedReviews()
@@ -65,6 +66,16 @@ namespace LinqPractice
 
             foreach (var row in Data)
                 Console.WriteLine("User " + row["UserId"] + " liked Product " + row["ProductID"] + " with a rating of " + row["Rating"]+", Review :"+row["Review"]);
+        }
+
+        public void GetAverageRating()
+        {
+            var Data = from productReview in productReviews.AsEnumerable()
+                       group productReview by (int)productReview["ProductID"] into newTable
+                       select new { ProductId = newTable.Key, Average = newTable.Average(x => (int)x["Rating"]) };
+
+            foreach (var row in Data)
+                Console.WriteLine("Product: " + row.ProductId + " Average: " + row.Average);
         }
     }
 }
