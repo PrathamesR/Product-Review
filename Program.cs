@@ -33,8 +33,8 @@ namespace LinqPractice
 
             Management management = new Management();
             management.TopRecords(productReviews);
-
-
+            Console.WriteLine("---");
+            management.SelectRecords(productReviews);
             Console.Read();
         }
     }
