@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Linq;
 using System.Data;
 
 namespace LinqPractice
@@ -44,6 +43,8 @@ namespace LinqPractice
             management.GetReviewCountByProduct(productReviews);
             Console.WriteLine("---");
             management.GetReviews(productReviews);
+            Console.WriteLine("---");
+            management.GetFrom6th(productReviews);
             Console.Read();
         }
     }

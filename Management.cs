@@ -10,6 +10,11 @@ namespace LinqPractice
     {
         public DataTable dataTable = new DataTable();
 
+        static void DisplayAllRecordDetails(IEnumerable<ProductReview> records)
+        {
+            foreach(var record in records)
+                Console.WriteLine("ProductID: " + record.ProductId + " " + " UserId: " + record.UserId + " " + " Rating: " + record.Rating + " " + " Review: " + record.Review + " Liked: " + record.isLike);
+        }
 
         /// <summary>
         /// Retrieves the Top records.
@@ -21,8 +26,8 @@ namespace LinqPractice
                                 orderby productReview.Rating descending
                                 select productReview).Take(3);
 
-            foreach (var record in recordedData)
-                Console.WriteLine("ProductID: " + record.ProductId + " " + " UserId: " + record.UserId + " " + " Rating: " + record.Rating + " " + " Review: " + record.Review + " Liked: " + record.isLike);
+            DisplayAllRecordDetails(recordedData);
+               
         }
 
         public void SelectRecords(List<ProductReview> reviews)
@@ -31,8 +36,7 @@ namespace LinqPractice
                                 where ((productReview.ProductId == 1) || (productReview.ProductId == 4) || (productReview.ProductId == 9)) && (productReview.Rating > 3)
                                 select productReview);
 
-            foreach (var record in recordedData)
-                Console.WriteLine("ProductID: " + record.ProductId + " " + " UserId: " + record.UserId + " " + " Rating: " + record.Rating + " " + " Review: " + record.Review + " Liked: " + record.isLike);
+            DisplayAllRecordDetails(recordedData);
         }
 
         public void GetReviewCountByProduct(List<ProductReview> reviews)
@@ -52,6 +56,14 @@ namespace LinqPractice
             {
                 Console.WriteLine("ProductId: " + product.ProductId + " Count: " + product.Review);
             }
+        }
+
+        public void GetFrom6th(List<ProductReview> reviews)
+        {
+            var Data = (from productReview in reviews
+                        select productReview).Skip(5);
+
+            DisplayAllRecordDetails(Data);
         }
     }
 }
