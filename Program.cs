@@ -42,6 +42,8 @@ namespace LinqPractice
             management.SelectRecords(productReviews);
             Console.WriteLine("---");
             management.GetReviewCountByProduct(productReviews);
+            Console.WriteLine("---");
+            management.GetReviews(productReviews);
             Console.Read();
         }
     }

@@ -43,5 +43,15 @@ namespace LinqPractice
                 Console.WriteLine("ProductId: "+product.ProductId + " Count: " + product.Count);
             }
         }
+
+        public void GetReviews(List<ProductReview> reviews)
+        {
+            var Data = from productReview in reviews
+                       select new { productReview.ProductId, productReview.Review };
+            foreach (var product in Data)
+            {
+                Console.WriteLine("ProductId: " + product.ProductId + " Count: " + product.Review);
+            }
+        }
     }
 }
